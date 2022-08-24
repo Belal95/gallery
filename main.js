@@ -22,6 +22,13 @@ jQuery(() => {
   function start() {
     allStart();
     containerStart();
+    setTimeout(loading, 7000);
+  }
+
+  /** Hide the loading icon & show the gallery */
+  function loading() {
+    $(".loading").hide();
+    gallery.css("display", "grid");
   }
 
   /**
@@ -30,10 +37,11 @@ jQuery(() => {
    * @param {Number} count
    */
   function appendImgs(parent, count) {
-    for (let i = 0; i <= count; i++) {
-      const img = $(`<div><img src="./images/${i + 1}.jpg"></div>`);
-      parent.append(img);
-    }
+    let elements = "";
+    for (let i = 0; i <= count; i++)
+      elements += `<div><img src="./images/${i + 1}.jpg"></div>`;
+    const imgs = $(elements);
+    parent.append(imgs);
   }
 
   /**
